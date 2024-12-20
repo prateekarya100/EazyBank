@@ -26,14 +26,14 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/eazybank
       SPRING_DATASOURCE_USERNAME: docker
       SPRING_DATASOURCE_PASSWORD: docker
-    deploy:
-      replicas: 5
+#    deploy:
+#      replicas: 5
     depends_on:
       mysql:
         condition: service_healthy
     ports:
-#      - "8081:8081"
-      - "0:8081" # port 0 set for dynamic port mapping allotment
+      - "8081:8081"
+#      - "0:8081" # port 0 set for dynamic port mapping allotment
 
 
   cards:
