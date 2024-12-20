@@ -10,9 +10,6 @@ import com.tomcat.Cards.repository.CardsRepository;
 import com.tomcat.Cards.service.iCardsServices;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import javax.smartcardio.Card;
-import javax.smartcardio.CardNotPresentException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -84,20 +81,6 @@ public class iCardsServicesImpl implements iCardsServices {
                 () -> new ResourceNotFoundException("card", "mobile number", mobileNumber)
         ));
         cardsRepository.deleteByMobileNumber(cards.get().getMobileNumber());
-        return true;
-    }
-
-    @Override
-    public boolean resetCardLimitToZero(CardsDto cardsDto) {
-        Optional<Cards> cardsOptional = Optional.ofNullable(cardsRepository.findByCardNumber(cardsDto.getCardNumber()).orElseThrow(
-                () -> new ResourceNotFoundException("card", cardsDto.getMobileNumber().toString(), cardsDto.getCardNumber())
-        ));
-        if (cardsOptional.isPresent()){
-            cardsOptional.get().setTotalLimit(CardsConstants.CARD_LIMIT);
-            cardsOptional.get().setAvailableLimit(CardsConstants.CARD_LIMIT);
-            cardsOptional.get().setAmountUsed(0);
-            cardsRepository.save(cardsOptional.get());
-        }
         return true;
     }
 

@@ -1,4 +1,3 @@
-
 server:
   port: 8081
 
@@ -14,20 +13,3 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-build:
-  version: 2.5
-
-application:
-  developer: PRATEEK ARYA
-contactDetails:
-  mobile: 9650841442
-  email: prateekarya100@gmail.com
-
-accounts:
-  message: "Welcome to EazyBank Accounts Restful webservices related APIs"
-  contactDetails:
-    mobile: "9650841442"
-    email: "prateekarya100@gmail.com"
-  onCallSupport:
-    - 9650841442
-    - 9389998268

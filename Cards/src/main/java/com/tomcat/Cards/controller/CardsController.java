@@ -217,17 +217,4 @@ public class CardsController {
     public List<Cards> fetchAllCards() {
         return cardsServices.fetchingAllCustomersCards();
     }
-
-//    reset cards limit
-        @PatchMapping(value = "/limitreset")
-    public ResponseEntity<ResponseDto> resetCardLimit(@RequestBody CardsDto cardsDto){
-        boolean isResetCardLimit = cardsServices.resetCardLimitToZero(cardsDto);
-        if (isResetCardLimit){
-            return ResponseEntity.status(HttpStatus.ACCEPTED)
-                    .body(new ResponseDto(HttpStatus.ACCEPTED,"woohooo!! your card limit reset successfully"));
-        }else {
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
-                    .body(new ResponseDto(HttpStatus.NOT_ACCEPTABLE,"sorry, your limit reset for your card is not accepted"));
-        }
-    }
 }

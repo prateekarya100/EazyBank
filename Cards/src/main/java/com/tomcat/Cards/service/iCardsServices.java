@@ -16,6 +16,4 @@ public interface iCardsServices {
     boolean cardDetailsUpdation(CardsDto cardsDto);
 
     boolean cardClosureHandler(String mobileNumber);
-
-    boolean resetCardLimitToZero(CardsDto cardsDto);
 }

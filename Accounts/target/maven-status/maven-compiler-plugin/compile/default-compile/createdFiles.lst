@@ -2,7 +2,6 @@ com\tomcatdevs\Accounts\mapper\CustomerMapper.class
 com\tomcatdevs\Accounts\model\Accounts.class
 com\tomcatdevs\Accounts\AccountsApplication.class
 com\tomcatdevs\Accounts\constants\AccountsConstants.class
-com\tomcatdevs\Accounts\dto\AccountsContactInfoDto.class
 com\tomcatdevs\Accounts\exception\ResourceNotFoundException.class
 com\tomcatdevs\Accounts\service\Impl\AccountsService.class
 com\tomcatdevs\Accounts\auditing\AuditAwareImpl.class

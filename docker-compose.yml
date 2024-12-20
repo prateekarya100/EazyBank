@@ -1,73 +1,70 @@
+version: '3.8'
 
 services:
-  accounts:
-    image: prateekarya100/accounts:ms
-#    container_name: accounts_container
-    build: ./accounts
-    ports:
-      - "8081:8080"
-#    deploy:
-#      replicas: 4
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/microservices
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - my_network
-
-  cards:
-    image: prateekarya100/cards:ms
-#    container_name: cards_container
-    build:  ./cards
-    ports:
-      - "0:8080" #[for scaling container write 0 , instead of mentioning any dynamic range]
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/microservices
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - my_network
-
-  loans:
-    image: prateekarya100/loans:ms
-    deploy:
-      replicas: 3
-    #    container_name: loans_container
-    build:  ./loans
-    ports:
-      - "0:8080"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/microservices
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - my_network
-
-  db:
+  mysql:
     image: mysql:8.0
-    container_name: db
+    container_name: mysql-container
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: microservices
+      MYSQL_ROOT_PASSWORD: yourpassword
+      MYSQL_DATABASE: eazybank
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
     ports:
       - "3307:3306"
-    networks:
-      - my_network
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -ppassword || exit 1"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 30s
       timeout: 10s
       retries: 5
 
+  accounts:
+    build:
+      context: ./Accounts
+    image: prateekarya100/accounts:ms
+#    container_name: accounts-container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/eazybank
+      SPRING_DATASOURCE_USERNAME: docker
+      SPRING_DATASOURCE_PASSWORD: docker
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+
+
+  cards:
+    build:
+      context: ./Cards
+    image: prateekarya100/cards:ms
+#    container_name: cards-container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/eazybank
+      SPRING_DATASOURCE_USERNAME: docker
+      SPRING_DATASOURCE_PASSWORD: docker
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "9000:8082"
+
+  loans:
+    build:
+      context: ./Loans
+    image: prateekarya100/loans:ms
+#    container_name: loans-container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/eazybank
+      SPRING_DATASOURCE_USERNAME: docker
+      SPRING_DATASOURCE_PASSWORD: docker
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8090:8083"
+
+
 networks:
-  my_network:
+  default:
+    name: mynetwork
     driver: bridge
