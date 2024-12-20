@@ -5,25 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="292d34c0-8a32-47b3-b3b3-6310a5be1cef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Accounts/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cards/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Loans/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/section2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/section4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Accounts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/AccountsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/AccountsApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/controller/AccountsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Accounts/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cards/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Cards/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cards/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Cards/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Loans/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Loans/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Loans/src/main/java/com/tomcat/Loans/LoansApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Loans/src/main/java/com/tomcat/Loans/LoansApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Loans/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Loans/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,12 +33,12 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Accounts" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2qTwlpS6yg8eqWObZ0ifRwdnsr3" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -62,8 +56,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/github_repo_clone/bankapp/bankapp"
   }
 }]]></component>
   <component name="RunManager" selected="Application.LoansApplication">

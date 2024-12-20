@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing(auditorAwareRef = "AuditAwareImpl")
 @OpenAPIDefinition(
 		info = @Info(
-				title = "Loans Microservices RestAPI Documentation",
+				title = "Loans Microservices",
 				description = "Loans Microservices OpenAPI documentation",
 				contact = @Contact(
 						name = "Prateek Arya",
