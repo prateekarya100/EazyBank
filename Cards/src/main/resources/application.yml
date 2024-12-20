@@ -13,3 +13,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+cards:
+  message: "thank you for contacting cards microservices development team"
+  contactDetails:
+    developer: "prateek arya"
+    email: "prateekarya100@gmail.com"
+  onCallSupport:
+    - 9650841442
+    - 9123456789

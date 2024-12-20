@@ -1,6 +1,7 @@
 package com.tomcat.Cards.controller;
 
 import com.tomcat.Cards.dto.CardsDto;
+import com.tomcat.Cards.dto.ContactInfoCardsDevTeam;
 import com.tomcat.Cards.dto.ErrorResponseDto;
 import com.tomcat.Cards.dto.ResponseDto;
 import com.tomcat.Cards.model.Cards;
@@ -14,6 +15,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +34,13 @@ import java.util.List;
         description = "EazyBank cards microservices restful API documentation"
 )
 @Validated
+@EnableConfigurationProperties(value = {ContactInfoCardsDevTeam.class})
 public class CardsController {
 
     private iCardsServices cardsServices;
+
+    @Autowired
+    private ContactInfoCardsDevTeam contactDevTeamInfo;
 
     @Operation(
             summary = "EazyBank issue new card to the customer"
@@ -216,5 +223,11 @@ public class CardsController {
     @GetMapping(value = "/allCards")
     public List<Cards> fetchAllCards() {
         return cardsServices.fetchingAllCustomersCards();
+    }
+
+    @GetMapping(value = "/card-devinfo")
+    public ResponseEntity<ContactInfoCardsDevTeam> contactCardDevTeam(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(contactDevTeamInfo);
     }
 }
