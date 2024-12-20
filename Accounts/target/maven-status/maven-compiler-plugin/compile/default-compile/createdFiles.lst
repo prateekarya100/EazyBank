@@ -11,6 +11,7 @@ com\tomcatdevs\Accounts\model\BaseEntity.class
 com\tomcatdevs\Accounts\dto\ErrorResponseDto.class
 com\tomcatdevs\Accounts\dto\CustomerDto.class
 com\tomcatdevs\Accounts\repository\CustomerRepository.class
+com\tomcatdevs\Accounts\dto\ContactDevTeam.class
 com\tomcatdevs\Accounts\controller\AccountsController.class
 com\tomcatdevs\Accounts\dto\AccountsDto.class
 com\tomcatdevs\Accounts\exception\CustomerAlreadyExistsException.class

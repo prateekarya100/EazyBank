@@ -1,5 +1,6 @@
 package com.tomcatdevs.Accounts.controller;
 
+import com.tomcatdevs.Accounts.dto.ContactDevTeam;
 import com.tomcatdevs.Accounts.dto.CustomerDto;
 import com.tomcatdevs.Accounts.dto.ErrorResponseDto;
 import com.tomcatdevs.Accounts.dto.ResponseDto;
@@ -14,6 +15,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +31,14 @@ import org.springframework.web.bind.annotation.*;
         name = "EazyBank Accounts Service",
         description = "EazyBank Accounts microservices restful services documentation"
 )
+@EnableConfigurationProperties(value = {ContactDevTeam.class})
 public class AccountsController {
 
 //    @Autowired
     private IAccountsService iAccountsService;
+
+    @Autowired
+    private ContactDevTeam contactDevTeam;
 
     @Operation(
             summary = "Create new bank account in eazybank",
@@ -165,6 +171,12 @@ public class AccountsController {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(HttpStatus.EXPECTATION_FAILED.toString(),"customer account deletion failed"));
         }
+    }
+
+    @GetMapping(value = "/contact-info")
+    public ResponseEntity<ContactDevTeam> connectAccountDevTeam(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(contactDevTeam);
     }
 
 }

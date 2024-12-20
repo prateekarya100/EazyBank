@@ -3,6 +3,7 @@ D:\microservices\section4\Accounts\src\main\java\com\tomcatdevs\Accounts\auditin
 D:\microservices\section4\Accounts\src\main\java\com\tomcatdevs\Accounts\constants\AccountsConstants.java
 D:\microservices\section4\Accounts\src\main\java\com\tomcatdevs\Accounts\controller\AccountsController.java
 D:\microservices\section4\Accounts\src\main\java\com\tomcatdevs\Accounts\dto\AccountsDto.java
+D:\microservices\section4\Accounts\src\main\java\com\tomcatdevs\Accounts\dto\ContactDevTeam.java
 D:\microservices\section4\Accounts\src\main\java\com\tomcatdevs\Accounts\dto\CustomerDto.java
 D:\microservices\section4\Accounts\src\main\java\com\tomcatdevs\Accounts\dto\ErrorResponseDto.java
 D:\microservices\section4\Accounts\src\main\java\com\tomcatdevs\Accounts\dto\ResponseDto.java
