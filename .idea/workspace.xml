@@ -8,7 +8,6 @@
       <change afterPath="$PROJECT_DIR$/Accounts/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Cards/Dockerfile" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Loans/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Accounts/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/AccountsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/src/main/java/com/tomcatdevs/Accounts/AccountsApplication.java" afterDir="false" />
@@ -33,7 +32,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Accounts" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Cards" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,

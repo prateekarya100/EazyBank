@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing(auditorAwareRef = "AuditAwareImpl")
 @OpenAPIDefinition(
 		info = @Info(
-				title = "Accounts microservices",
+				title = "Accounts Microservices",
 				description = "EazyBank accounts microservices rest api documentation"
 				,
 				contact = @Contact(
