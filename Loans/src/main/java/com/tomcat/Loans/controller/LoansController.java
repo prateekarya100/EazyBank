@@ -1,5 +1,6 @@
 package com.tomcat.Loans.controller;
 
+import com.tomcat.Loans.dto.ContactInfoLoansDevTeam;
 import com.tomcat.Loans.dto.ErrorResponseDto;
 import com.tomcat.Loans.dto.LoansDto;
 import com.tomcat.Loans.dto.ResponseDto;
@@ -13,6 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +30,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/api/loans",produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 @AllArgsConstructor
+@EnableConfigurationProperties(value = {ContactInfoLoansDevTeam.class})
 public class LoansController {
 
     private ILoansService loansService;
+
+    @Autowired
+    private ContactInfoLoansDevTeam contactDevTeamInfo;
 
     @Operation(
             summary = "Grant new loan to the bank customer",
@@ -166,5 +173,11 @@ public class LoansController {
                     .body(new ResponseDto(HttpStatus.BAD_REQUEST,
                             "oops, something went wrong, please contact to development team"));
         }
+    }
+
+    @GetMapping(value = "/loans-devinfo")
+    public ResponseEntity<ContactInfoLoansDevTeam> contactCardDevTeam(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(contactDevTeamInfo);
     }
 }
