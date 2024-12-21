@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,14 +30,21 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "/api/loans",produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
-@AllArgsConstructor
+//@AllArgsConstructor
 @EnableConfigurationProperties(value = {ContactInfoLoansDevTeam.class})
 public class LoansController {
 
-    private ILoansService loansService;
+    private final ILoansService loansService;
 
     @Autowired
     private ContactInfoLoansDevTeam contactDevTeamInfo;
+
+    public LoansController(ILoansService loansService) {
+        this.loansService = loansService;
+    }
+
+    @Value("${build.version}")
+    private String buildVersion;
 
     @Operation(
             summary = "Grant new loan to the bank customer",
@@ -175,9 +183,14 @@ public class LoansController {
         }
     }
 
-    @GetMapping(value = "/loans-devinfo")
+    @GetMapping(value = "/contact-info")
     public ResponseEntity<ContactInfoLoansDevTeam> contactCardDevTeam(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(contactDevTeamInfo);
+    }
+
+    @GetMapping(value = "/version")
+    public String getBuildVersion(){
+        return buildVersion;
     }
 }

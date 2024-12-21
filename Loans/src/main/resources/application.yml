@@ -14,6 +14,19 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  config:
+    import:
+      - "loans_production.yml"
+      - "loans_quality.yml"
+      - "loans_support.yml"
+
+  profiles:
+    active:
+      - "loans_quality"
+
+build:
+  version: "v3.0"
+
 loans:
   message: "thank you for contacting loans microservices development team"
   contactDetails:
