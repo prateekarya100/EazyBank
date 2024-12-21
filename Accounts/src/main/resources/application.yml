@@ -14,8 +14,20 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  config:
+    import:
+      - "application_qa.yml"
+      - "application_prod.yml"
+      - "application_support.yml"
+  profiles:
+    active:
+      - "supp"
+
+build:
+  version: "1.0"
+
 accounts:
-  message: "thank you for contacting accounts microservices development team"
+  message: "thank you for contacting accounts microservices development team [primary]"
   contactDetails:
     developer: "prateek arya"
     email: "prateekarya100@gmail.com"

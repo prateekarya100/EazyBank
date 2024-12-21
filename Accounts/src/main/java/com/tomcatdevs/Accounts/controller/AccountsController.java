@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/accounts",produces = MediaType.APPLICATION_JSON_VALUE)
-@AllArgsConstructor
+//@AllArgsConstructor
 @Validated
 @Tag(
         name = "EazyBank Accounts Service",
@@ -35,10 +36,17 @@ import org.springframework.web.bind.annotation.*;
 public class AccountsController {
 
 //    @Autowired
-    private IAccountsService iAccountsService;
+    private final IAccountsService iAccountsService;
 
     @Autowired
     private ContactDevTeam contactDevTeam;
+
+    @Value("${build.version}")
+    private String buildversion;
+
+    public AccountsController(IAccountsService iAccountsService) {
+        this.iAccountsService = iAccountsService;
+    }
 
     @Operation(
             summary = "Create new bank account in eazybank",
@@ -173,10 +181,37 @@ public class AccountsController {
         }
     }
 
+    @Operation(
+            summary = "contact information eazybank",
+            description = "EazyBank accounts microservices contact development team documentation"
+    )
+    @ApiResponses(
+            value = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description="HTTP Status OK"
+                    ),
+                    @ApiResponse(
+                            responseCode = "417",
+                            description = "Expectation Failed"
+                    ),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description="Internal_Server_Error",
+                            content = @Content(
+                                    schema = @Schema(implementation = ErrorResponseDto.class))
+                    )
+            }
+    )
     @GetMapping(value = "/contact-info")
     public ResponseEntity<ContactDevTeam> connectAccountDevTeam(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(contactDevTeam);
+    }
+
+    @GetMapping(value = "/version")
+    public String getBuildVersion(){
+        return buildversion;
     }
 
 }
