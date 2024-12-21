@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,7 +29,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/cards",produces = MediaType.APPLICATION_JSON_VALUE)
-@AllArgsConstructor
+//@AllArgsConstructor
 @Tag(
         name = "Cards Microservices",
         description = "EazyBank cards microservices restful API documentation"
@@ -37,10 +38,17 @@ import java.util.List;
 @EnableConfigurationProperties(value = {ContactInfoCardsDevTeam.class})
 public class CardsController {
 
-    private iCardsServices cardsServices;
+    private final iCardsServices cardsServices;
 
     @Autowired
     private ContactInfoCardsDevTeam contactDevTeamInfo;
+
+    public CardsController(iCardsServices cardsServices) {
+        this.cardsServices = cardsServices;
+    }
+
+    @Value("${build.version}")
+    private String buildVersion;
 
     @Operation(
             summary = "EazyBank issue new card to the customer"
@@ -225,9 +233,14 @@ public class CardsController {
         return cardsServices.fetchingAllCustomersCards();
     }
 
-    @GetMapping(value = "/card-devinfo")
+    @GetMapping(value = "/contact-info")
     public ResponseEntity<ContactInfoCardsDevTeam> contactCardDevTeam(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(contactDevTeamInfo);
+    }
+
+    @GetMapping(value = "/version")
+    public String getBuildVersion(){
+        return buildVersion;
     }
 }
