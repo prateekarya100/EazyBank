@@ -24,7 +24,7 @@ spring:
     active:
 #      - "cards_prod"
 #      - "cards_qa"
-#      - "cards_support"
+      - "cards_support"
 
 
 # HIGHEST PRIORITY AS PER ENVIRONMENT CHANGES
