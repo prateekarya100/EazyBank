@@ -2,7 +2,7 @@
 spring:
   config:
     activate:
-      on-profile: "supp"
+      on-profile: "support"
 
 accounts:
   message: "thank you for contacting accounts microservices production support team"

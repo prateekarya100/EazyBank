@@ -21,7 +21,7 @@ spring:
       - "application_support.yml"
   profiles:
     active:
-      - "supp"
+      - "support"
 
 build:
   version: "1.0"
