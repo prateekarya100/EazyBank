@@ -2,6 +2,14 @@ server:
   port: 8083
 
 spring:
+  application:
+    name: "loans"
+  profiles:
+    active:
+      - "support"
+  config:
+    import:
+      - "optional:configserver://localhost:8071/"
   datasource:
     url: "jdbc:mysql://localhost:3306/microservices"
     username: "root"
@@ -13,25 +21,3 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
-  config:
-    import:
-      - "loans_production.yml"
-      - "loans_quality.yml"
-      - "loans_support.yml"
-
-  profiles:
-    active:
-      - "loans_quality"
-
-build:
-  version: "v3.0"
-
-loans:
-  message: "thank you for contacting loans microservices development team"
-  contactDetails:
-    developer: "prateek arya"
-    email: "prateekarya100@gmail.com"
-  onCallSupport:
-    - 9650841442
-    - 9123456789
