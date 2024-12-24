@@ -1,0 +1,12 @@
+
+build:
+  version: "1.0"
+
+accounts:
+  message: "thank you for contacting accounts microservices development team [default]"
+  contactDetails:
+    developer: "prateek arya"
+    email: "prateekarya100@gmail.com"
+  onCallSupport:
+    - 9650841442
+    - 9123456789
