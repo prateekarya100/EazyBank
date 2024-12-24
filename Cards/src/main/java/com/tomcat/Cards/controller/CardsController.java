@@ -47,8 +47,8 @@ public class CardsController {
         this.cardsServices = cardsServices;
     }
 
-    @Value("${build.version}")
-    private String buildVersion;
+//    @Value("${build.version}")
+//    private String buildVersion;
 
     @Operation(
             summary = "EazyBank issue new card to the customer"
@@ -239,8 +239,8 @@ public class CardsController {
                 .body(contactDevTeamInfo);
     }
 
-    @GetMapping(value = "/version")
-    public String getBuildVersion(){
-        return buildVersion;
-    }
+//    @GetMapping(value = "/version")
+//    public String getBuildVersion(){
+//        return buildVersion;
+//    }
 }
