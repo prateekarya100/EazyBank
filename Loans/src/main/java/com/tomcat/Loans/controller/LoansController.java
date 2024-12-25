@@ -43,8 +43,8 @@ public class LoansController {
         this.loansService = loansService;
     }
 
-//    @Value("${build.version}")
-//    private String buildVersion;
+    @Value("${build.version}")
+    private String buildVersion;
 
     @Operation(
             summary = "Grant new loan to the bank customer",
@@ -189,12 +189,8 @@ public class LoansController {
                 .body(contactDevTeamInfo);
     }
 
-    @GetMapping(value = "/test")
-    public String testing(){
-        return "testing loans microservices after changes";
+    @GetMapping(value = "/version")
+    public String getBuildVersion(){
+        return buildVersion;
     }
-//    @GetMapping(value = "/version")
-//    public String getBuildVersion(){
-//        return buildVersion;
-//    }
 }
