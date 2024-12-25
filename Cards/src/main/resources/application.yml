@@ -8,7 +8,8 @@ spring:
     active:
       - "prod"
   config:
-    import: "optional:configserver://localhost:8071/"
+    import:
+      - "optional:configserver:http://localhost:8071/"
   datasource:
     url: "jdbc:mysql://localhost:3306/microservices"
     username: "root"
