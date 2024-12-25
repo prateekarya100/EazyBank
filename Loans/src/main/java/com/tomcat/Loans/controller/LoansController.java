@@ -189,6 +189,10 @@ public class LoansController {
                 .body(contactDevTeamInfo);
     }
 
+    @GetMapping(value = "/test")
+    public String testing(){
+        return "testing loans microservices after changes";
+    }
 //    @GetMapping(value = "/version")
 //    public String getBuildVersion(){
 //        return buildVersion;
