@@ -1,0 +1,28 @@
+server:
+  port: "8071"
+
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    active:
+#      - native
+      - git
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/prateekarya100/configserver.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+#        native:
+#          search-locations:
+#            - "classpath:/config" #fetching all configurations from config folder inside configserver app
+
+            #fetching all configurations from config folder inside configserver app
+#             - "file:///D:/microservices/section6/v2-springboot/app-configurations"
+
+encrypt:
+  key: "f1631d3e1f1bac4efaaa653d64b3b8b88a0f38a42b0c197e31d429b15e6ebab7d4f9f750c5f3da351b803df65d2a3fcb"

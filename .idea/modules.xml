@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/section4.iml" filepath="$PROJECT_DIR$/.idea/section4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/refresh-springboot-apps.iml" filepath="$PROJECT_DIR$/.idea/refresh-springboot-apps.iml" />
     </modules>
   </component>
 </project>
