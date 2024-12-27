@@ -6,8 +6,8 @@ build:
 loans:
   message: "thank you for contacting loans microservices quality analysis team"
   contactDetails:
-    developer: "adhved sharma - quality engineer"
-    email: "adhvedsharma@gmail.com"
+    developer: "nitin sharma - quality engineer"
+    email: "nitinsharma@gmail.com"
   onCallSupport:
     - 9543211234
     - 9123456789
