@@ -1,4 +1,3 @@
-#file: noinspection undefined
 server:
   port: 8081
 
@@ -10,8 +9,7 @@ spring:
       - "prod"
   config:
     import:
-      - "optional:configserver:http://localhost:8071/"
-
+      - "optional:configserver:http://localhost:8071"
   datasource:
     url: "jdbc:mysql://localhost:3306/microservices"
     username: "root"
@@ -23,6 +21,13 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
 
 management:
   endpoints:

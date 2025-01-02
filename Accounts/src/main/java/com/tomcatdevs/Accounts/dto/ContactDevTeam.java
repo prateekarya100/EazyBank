@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 
 @ConfigurationProperties(prefix = "accounts")
-@Getter @Setter
-public class ContactDevTeam{
-    private String message;
-    private HashMap<String,String> contactDetails;
-    private List<String> onCallSupport;
+@Setter @Getter
+public class ContactDevTeam {
+ private String message;
+ private HashMap<String,String> contactDetails;
+ private List<String> onCallSupport;
 }
