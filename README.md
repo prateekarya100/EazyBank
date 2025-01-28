@@ -17,6 +17,8 @@ REST APIs: The backend exposes RESTful APIs that are used to interact with the s
 
 Spring Security: Security is a top priority in this application. Spring Security is used to ensure that all sensitive data is protected. It handles user authentication and authorization for different banking services and API access. 🔒
 
+RabbitMQ: RabbitMQ is used for message brokering between microservices, enabling asynchronous communication and decoupling services for improved scalability and fault tolerance. 🐇
+
 Spring Cloud: The application leverages Spring Cloud for cloud-native features such as service discovery, configuration management, and fault tolerance. It makes the system highly resilient and easily deployable to cloud environments. ☁️
 
 Swagger API Documentation: The project uses Swagger to provide an interactive and user-friendly interface for API documentation. It allows developers to easily explore and test the available APIs. 📖
