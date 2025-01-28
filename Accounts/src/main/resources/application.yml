@@ -1,0 +1,41 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: "accounts"
+  profiles:
+    active:
+      - "prod"
+  config:
+    import:
+      - "optional:configserver:http://localhost:8071"
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: ''
+    driverClassName: org.h2.Driver
+  #    url: "jdbc:mysql://localhost:3306/microservices"
+  #    username: "root"
+  #    password: "root"
+  #    driver-class-name: "com.mysql.cj.jdbc.Driver"
+
+
+  jpa:
+    #    database-platform: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
