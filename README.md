@@ -1,4 +1,5 @@
-EazyBank - Banking Microservices Application 💳🏦
+
+
 EazyBank is a robust and scalable microservices-based banking application built using modern technologies like Spring Boot, Spring Cloud, Spring Security, and Docker. 
 It demonstrates a secure and efficient backend system that leverages REST APIs for communication and provides seamless integration with various services. 
 The application is designed to handle a wide range of banking operations and is fully containerized using Docker for easy deployment and portability.
