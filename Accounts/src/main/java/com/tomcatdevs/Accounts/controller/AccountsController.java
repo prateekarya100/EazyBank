@@ -63,7 +63,7 @@ public class AccountsController {
                     )
             }
     )
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/createAccount")
     public ResponseEntity<ResponseDto> create(@Valid @RequestBody CustomerDto  customerDto){
         System.out.println(customerDto);
         iAccountsService.createAccount(customerDto);
@@ -93,7 +93,7 @@ public class AccountsController {
                     )
             }
     )
-    @GetMapping(value = "/fetch")
+    @GetMapping(value = "/fetchAccount")
     public ResponseEntity<CustomerDto> fetch(@RequestParam
                                                  @Pattern(regexp = "$|[0-9]{10}",message = "number must be of 10 digit")
                                                  String mobileNumber){
@@ -124,7 +124,7 @@ public class AccountsController {
                     )
             }
     )
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/updateAccount")
     public ResponseEntity<ResponseDto> update(@Valid @RequestBody CustomerDto customerDto){
         boolean isUpdated = iAccountsService.updateCustomerAccountDetails(customerDto);
         if(isUpdated){
@@ -159,7 +159,7 @@ public class AccountsController {
                     )
             }
     )
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping(value = "/closureAccount")
     ResponseEntity<ResponseDto> delete(@RequestParam
                                        @Pattern(regexp = "$|[0-9]{10}",message = "number must be of 10 digit")
                                        String mobileNumber){
