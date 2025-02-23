@@ -11,19 +11,19 @@ spring:
     import:
       - "optional:configserver:http://localhost:8071"
   datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password: ''
-    driverClassName: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+#    password: ''
+#    driverClassName: org.h2.Driver
 #    url: "jdbc:mysql://localhost:3309/loansdb"
-#    url: "jdbc:mysql://localhost:3309/microservices"
-#    username: "root"
-#    password: "root"
-#    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    url: "jdbc:mysql://localhost:3306/microservices"
+    username: "root"
+    password: "root"
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
 
   jpa:
-#    database-platform: org.hibernate.dialect.MySQLDialect
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQLDialect
+#    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -61,5 +61,5 @@ eureka:
 info:
   app:
     name: "loans"
-    description: "EazyBank loan application"
+    description: "EazyBank loans application"
     version: "1.0.0"
