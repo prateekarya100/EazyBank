@@ -1,5 +1,6 @@
 package com.tomcatdevs.Accounts.mapper;
 
+import com.tomcatdevs.Accounts.dto.CustomerDetailsDto;
 import com.tomcatdevs.Accounts.dto.CustomerDto;
 import com.tomcatdevs.Accounts.model.Customer;
 
@@ -16,5 +17,13 @@ public class CustomerMapper {
         customer.setEmail(customerDto.getEmail());
         customer.setMobileNumber(customerDto.getMobileNumber());
         return customer;
+    }
+
+    // customerDetailsDto
+    public static CustomerDetailsDto mapToCustomerDetailsDto(Customer customer, CustomerDetailsDto customerDetailsDto){
+        customerDetailsDto.setName(customer.getName());
+        customerDetailsDto.setEmail(customer.getEmail());
+        customerDetailsDto.setMobileNumber(customer.getMobileNumber());
+        return customerDetailsDto;
     }
 }
