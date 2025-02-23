@@ -84,6 +84,15 @@ public class iCardsServicesImpl implements iCardsServices {
         return true;
     }
 
+    @Override
+    public CardsDto fetchCardByMobileNumber(String mobileNumber) {
+        Optional<Cards> cards = Optional.ofNullable(Optional.ofNullable(cardsRepository.findByMobileNumber(mobileNumber)).orElseThrow(
+                () -> new ResourceNotFoundException("card", "mobile number", mobileNumber)
+        ));
+
+        return CardsMapper.mapToDto(cards.get(),new CardsDto());
+    }
+
     private Cards newCardIssued(String mobileNumber) {
         Cards card = new Cards();
 
