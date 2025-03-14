@@ -127,6 +127,7 @@ services:
     image: "prateekarya100/accounts:ms"
     container_name: accounts-ms
     ports:
+#      - "0:8081" # allocating dynamic ports during scaling
       - "8081:8081"
     environment:
       SPRING_APPLICATION_NAME: "accounts"
@@ -136,6 +137,9 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://accountsdb:3306/app1db
       SPRING_DATASOURCE_USERNAME: app1user
       SPRING_DATASOURCE_PASSWORD: app1pass
+#    deploy:
+#      mode: replicated
+#      replicas: 4
     depends_on:
       eurekaserver:
         condition: service_healthy
