@@ -21,6 +21,10 @@ spring:
         username: "root"
         password: "root"
         driver-class-name: "com.mysql.cj.jdbc.Driver"
+#  security:
+#    user:
+#      name: tomcatdev
+#      password: admin
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -64,3 +68,6 @@ info:
     name: "accounts"
     description: "EazyBank accounts application"
     version: "1.0.0"
+
+
+
