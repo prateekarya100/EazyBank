@@ -1,6 +1,6 @@
-
 server:
   port: 8081
+
 
 spring:
   application:
@@ -16,15 +16,12 @@ spring:
 #    username: sa
 #    password: ''
 #    driverClassName: org.h2.Driver
-  #      url: "jdbc:mysql://localhost:3307/accountsdb"
-        url: "jdbc:mysql://localhost:3306/microservices"
-        username: "root"
-        password: "root"
-        driver-class-name: "com.mysql.cj.jdbc.Driver"
-#  security:
-#    user:
-#      name: tomcatdev
-#      password: admin
+#      url: "jdbc:mysql://localhost:3307/accountsdb"
+      url: "jdbc:mysql://localhost:3306/microservices"
+      username: "root"
+      password: "root"
+      driver-class-name: "com.mysql.cj.jdbc.Driver"
+  
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -47,27 +44,25 @@ management:
     web:
       exposure:
         include: "*"
+
   endpoint:
     shutdown:
       enabled: true
+    info:
+      env:
+        enabled: true
+
+  eureka:
+    instance:
+      preferIpAddress: true
+    client:
+      fetch-registry: true
+      register-with-eureka: true
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+
   info:
-    env:
-      enabled: true
-
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-info:
-  app:
-    name: "accounts"
-    description: "EazyBank accounts application"
-    version: "1.0.0"
-
-
-
+    app:
+      name: "accounts"
+      description: "EazyBank accounts application"
+      version: "1.0.0"

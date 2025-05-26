@@ -6,7 +6,7 @@ import com.tomcatdevs.Accounts.model.Customer;
 
 public class CustomerMapper {
 
-    public static CustomerDto mapToCustomerDto(Customer customer,CustomerDto customerDto){
+    public static CustomerDto mapToCustomerDto(Customer customer, CustomerDto customerDto){
         customerDto.setName(customer.getName());
         customerDto.setEmail(customer.getEmail());
         customerDto.setMobileNumber(customer.getMobileNumber());

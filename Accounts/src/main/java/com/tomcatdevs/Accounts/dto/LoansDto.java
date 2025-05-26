@@ -1,6 +1,5 @@
 package com.tomcatdevs.Accounts.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -10,7 +9,6 @@ import lombok.*;
         name = "Loans",
         description = "holds loan related information"
 )
-@JsonIgnoreProperties("mobileNumber")
 public class LoansDto {
     @Schema(
             description = "customer mobile number",example = "91234567891"

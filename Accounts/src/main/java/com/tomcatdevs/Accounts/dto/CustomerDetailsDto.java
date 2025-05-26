@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
         description = "schema to hold customer,account and loan related information"
 )
 public class CustomerDetailsDto {
+
     @NotEmpty(message = "name must not be null or empty")
     @Size(min = 3, message = "name must be minimum 3 and maximum of 8 characters")
     @Schema(

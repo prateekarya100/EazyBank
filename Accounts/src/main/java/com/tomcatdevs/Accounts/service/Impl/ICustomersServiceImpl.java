@@ -15,6 +15,7 @@ import com.tomcatdevs.Accounts.service.ICustomersService;
 import com.tomcatdevs.Accounts.service.clients.CardsFeignClient;
 import com.tomcatdevs.Accounts.service.clients.LoansFeignClient;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +23,17 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class ICustomersServiceImpl implements ICustomersService {
 
+    @Autowired
     private AccountsRepository accountsRepository;
-    private CustomerRepository customerRepository;
+
+    @Autowired
     private CardsFeignClient cardsFeignClient;
+
+    @Autowired
     private LoansFeignClient loansFeignClient;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @Override
     public CustomerDetailsDto fetchConsolidatedCustomerDetails(String mobileNumber) {
@@ -39,7 +47,7 @@ public class ICustomersServiceImpl implements ICustomersService {
         CustomerDetailsDto customerDetailsDto = CustomerMapper.mapToCustomerDetailsDto(customer,new CustomerDetailsDto());
         customerDetailsDto.setAccountsDto(AccountsMapper.mapAccountsToDto(accounts,new AccountsDto()));
 
-        ResponseEntity<CardsDto> cardsDtoResponseEntity = cardsFeignClient.fetchCardByMobile(mobileNumber);
+        ResponseEntity<CardsDto> cardsDtoResponseEntity = cardsFeignClient.fetchCardByMobileNumber(mobileNumber);
         ResponseEntity<LoansDto> loansDtoResponseEntity = loansFeignClient.fetchLoans(mobileNumber);
 
         customerDetailsDto.setCardsDto(cardsDtoResponseEntity.getBody());

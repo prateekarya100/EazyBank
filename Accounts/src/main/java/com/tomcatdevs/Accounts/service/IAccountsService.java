@@ -1,6 +1,9 @@
 package com.tomcatdevs.Accounts.service;
 
 import com.tomcatdevs.Accounts.dto.CustomerDto;
+import com.tomcatdevs.Accounts.model.Accounts;
+
+import java.util.List;
 
 public interface IAccountsService {
     void createAccount(CustomerDto customerDto);
@@ -10,4 +13,6 @@ public interface IAccountsService {
     boolean updateCustomerAccountDetails(CustomerDto customerDto);
 
     boolean deleteCustomerAccount(String mobileNumber);
+
+    List<Accounts> fetchAllBankAccounts();
 }

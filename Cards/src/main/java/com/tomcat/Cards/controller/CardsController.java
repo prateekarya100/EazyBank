@@ -113,7 +113,7 @@ public class CardsController {
             }
     )
     @GetMapping(value = "/fetchCard")
-    public ResponseEntity<CardsDto> fetchCard(
+    public ResponseEntity<CardsDto> fetchCardCardNumber(
                                                   @Pattern(regexp = "$|[0-9]{10}",message = "card number must be of 10 digit only")
                                                   @RequestParam String cardNumber){
         CardsDto cardsDto = cardsServices.fetchCardDetailsByCardNumber(cardNumber);
@@ -126,41 +126,18 @@ public class CardsController {
         }
     }
 
+    @GetMapping(value = "/fetch-card-by-mobileNumber")
+    public ResponseEntity<CardsDto> fetchCardByMobileNumber(@Pattern(regexp = "$|[0-9]{10}",message = "mobile number must be of 10 digit only")
+                                                     @RequestParam String mobileNumber){
+//        System.out.println(mobileNumber);
 
-    @Operation(
-            summary = "EazyBank fetched card detail of the customer using mobile number"
-    )
-    @ApiResponses(
-            value = {
-                    @ApiResponse(
-                            responseCode = "201",
-                            description = "CREATED"
-                    ),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "INTERNAL_SERVER_ERROR"
-                    ),
-                    @ApiResponse(
-                            responseCode = "417",
-                            description = "EXPECTATION_FAILED",
-                            content = @Content(
-                                    contentSchema = @Schema(implementation = ErrorResponseDto.class)
-                            )
-                    )
-            }
-    )
-    @GetMapping(value = "/fetchCardByMobile")
-    public ResponseEntity<CardsDto> fetchCardByMobile(
-            @Pattern(regexp = "$|[0-9]{10}",message = "mobile number must be of 10 digit only")
-            @RequestParam String mobileNumber){
-       CardsDto cardsDto = cardsServices.fetchCardByMobileNumber(mobileNumber);
-        if(cardsDto != null){
-            return ResponseEntity
-                    .status(HttpStatus.ACCEPTED)
-                    .body(cardsDto);
-        }else{
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(null);
-        }
+        Optional<CardsDto> cardsOptional = cardsServices.fetchCardDetailsByMobileNumber(mobileNumber);
+//        System.out.println(cardsOptional);
+        return cardsOptional.map(cards -> ResponseEntity
+                .status(HttpStatus.OK)
+                .body(cards)).orElseGet(() -> ResponseEntity
+                .status(HttpStatus.EXPECTATION_FAILED)
+                .body(null));
     }
 
     /**

@@ -4,6 +4,7 @@ import com.tomcatdevs.Accounts.dto.ContactInfoAccountsDevTeam;
 import com.tomcatdevs.Accounts.dto.CustomerDto;
 import com.tomcatdevs.Accounts.dto.ErrorResponseDto;
 import com.tomcatdevs.Accounts.dto.ResponseDto;
+import com.tomcatdevs.Accounts.model.Accounts;
 import com.tomcatdevs.Accounts.service.IAccountsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -21,6 +22,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -69,7 +72,7 @@ public class AccountsController {
         iAccountsService.createAccount(customerDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(new ResponseDto(HttpStatus.CREATED.toString(),"account created successfuly"));
+                .body(new ResponseDto(HttpStatus.CREATED.toString(),"account created successfully"));
     }
 
     @Operation(
@@ -177,6 +180,11 @@ public class AccountsController {
     public ResponseEntity<ContactInfoAccountsDevTeam> contactCardDevTeam(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(accountsDevTeam);
+    }
+
+    @GetMapping(value = "/get-all-accounts")
+    public List<Accounts> getAllBankAccounts(){
+        return iAccountsService.fetchAllBankAccounts();
     }
 
 }

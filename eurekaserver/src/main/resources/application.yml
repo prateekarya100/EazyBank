@@ -1,3 +1,4 @@
+#spring.application.name=eurekaserver
 
 spring:
   application:
@@ -20,3 +21,12 @@ management:
     health:
       probes:
         enabled: true
+
+eureka:
+  instance:
+#    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

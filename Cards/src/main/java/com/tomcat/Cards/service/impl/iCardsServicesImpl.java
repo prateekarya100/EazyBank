@@ -2,6 +2,7 @@ package com.tomcat.Cards.service.impl;
 
 import com.tomcat.Cards.constants.CardsConstants;
 import com.tomcat.Cards.dto.CardsDto;
+import com.tomcat.Cards.exception.CardNotFoundException;
 import com.tomcat.Cards.exception.CreditCardAlreadyExists;
 import com.tomcat.Cards.exception.ResourceNotFoundException;
 import com.tomcat.Cards.mapper.CardsMapper;
@@ -44,10 +45,7 @@ public class iCardsServicesImpl implements iCardsServices {
         return cardsRepository.findAll();
     }
 
-    /**
-     * @param mobileNumber
-     * @return
-     */
+
     @Override
     public CardsDto fetchCardDetailsByCardNumber(String cardNumber) {
         Cards cards = cardsRepository.findByCardNumber(cardNumber).orElseThrow(
@@ -56,10 +54,7 @@ public class iCardsServicesImpl implements iCardsServices {
        return CardsMapper.mapToDto(cards,new CardsDto());
     }
 
-    /**
-     * @param mobileNumber
-     * @return
-     */
+
     @Override
     public boolean cardDetailsUpdation(CardsDto cardsDto) {
         Optional<Cards> cards = Optional.ofNullable(cardsRepository.findByCardNumber(cardsDto.getCardNumber()))
@@ -85,12 +80,11 @@ public class iCardsServicesImpl implements iCardsServices {
     }
 
     @Override
-    public CardsDto fetchCardByMobileNumber(String mobileNumber) {
-        Optional<Cards> cards = Optional.ofNullable(Optional.ofNullable(cardsRepository.findByMobileNumber(mobileNumber)).orElseThrow(
-                () -> new ResourceNotFoundException("card", "mobile number", mobileNumber)
-        ));
-
-        return CardsMapper.mapToDto(cards.get(),new CardsDto());
+    public Optional<CardsDto> fetchCardDetailsByMobileNumber(String mobile) {
+         Optional<Cards> cards = Optional.ofNullable(Optional.ofNullable(cardsRepository.findByMobileNumber(mobile)).orElseThrow(
+                 () -> new CardNotFoundException("no any card found registered with mobile number :: " + mobile)
+         ));
+         return Optional.of(CardsMapper.mapToDto(cards.get(), new CardsDto()));
     }
 
     private Cards newCardIssued(String mobileNumber) {

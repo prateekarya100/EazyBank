@@ -16,6 +16,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -106,6 +107,11 @@ public class AccountsService implements IAccountsService {
         accountsRepository.deleteByCustomerId(customer.getCustomerId());
         customerRepository.deleteById(customer.getCustomerId());
         return true;
+    }
+
+    @Override
+    public List<Accounts> fetchAllBankAccounts() {
+        return accountsRepository.findAll();
     }
 
     private Accounts createNewCustomerAccount(Customer customer) {

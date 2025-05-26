@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -60,11 +59,10 @@ public class CustomerController {
     )
     @GetMapping("/CustomerDetails")
     public ResponseEntity<CustomerDetailsDto> fetchConsolidatedCustomerDetails(@RequestParam
-                                                                                   @Pattern(regexp = "$|[0-9]{10}",message = "number must be of 10 digit")
-                                                                                   String mobileNumber){
-          CustomerDetailsDto customerDetailsDto = iCustomersService.fetchConsolidatedCustomerDetails(mobileNumber);
-          return ResponseEntity.status(HttpStatus.OK)
-                  .body(customerDetailsDto);
+                                                                               @Pattern(regexp = "$|[0-9]{10}",message = "number must be of 10 digit")
+                                                                               String mobileNumber){
+        CustomerDetailsDto customerDetailsDto = iCustomersService.fetchConsolidatedCustomerDetails(mobileNumber);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(customerDetailsDto);
     }
-
 }

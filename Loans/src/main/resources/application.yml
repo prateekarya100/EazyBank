@@ -45,21 +45,21 @@ management:
   endpoint:
     shutdown:
       enabled: true
+    info:
+      env:
+        enabled: true
+
+  eureka:
+    instance:
+      preferIpAddress: true
+    client:
+      fetch-registry: true
+      register-with-eureka: true
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+
   info:
-    env:
-      enabled: true
-
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-
-info:
-  app:
-    name: "loans"
-    description: "EazyBank loans application"
-    version: "1.0.0"
+    app:
+      name: "loans"
+      description: "EazyBank loans application"
+      version: "1.0.0"
