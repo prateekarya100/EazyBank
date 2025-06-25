@@ -121,7 +121,7 @@ services:
 
   accounts:
     image: "prateekarya100/accounts:ms"
-    #    container_name: accounts-ms
+    container_name: accounts-ms
     ports:
       #      - "8081:8081"
       - "8081:8081"
@@ -132,6 +132,12 @@ services:
       SPRING_DATASOURCE_USERNAME: app1user
       SPRING_DATASOURCE_PASSWORD: app1pass
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8761/eureka
+    healthcheck:
+      test: "curl --fail --silent http://accounts-ms:8081/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       configserver:
         condition: service_healthy
@@ -155,6 +161,12 @@ services:
       SPRING_DATASOURCE_USERNAME: app2user
       SPRING_DATASOURCE_PASSWORD: app2pass
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8761/eureka
+    healthcheck:
+      test: "curl --fail --silent http://cards-ms:8082/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       configserver:
         condition: service_healthy
@@ -176,10 +188,37 @@ services:
       SPRING_DATASOURCE_USERNAME: app3user
       SPRING_DATASOURCE_PASSWORD: app3pass
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8761/eureka
+    healthcheck:
+      test: "curl --fail --silent http://loans-ms:8083/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     depends_on:
       configserver:
         condition: service_healthy
       loansdb:
+        condition: service_healthy
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+
+  gatewayserver:
+    image: "prateekarya100/gatewayserver:ms"
+    container_name: gatewayserver-ms
+    ports:
+      - "8072:8072"
+    environment:
+      SPRING_APPLICATION_NAME: "gatewayserver"
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8761/eureka
+    depends_on:
+      accounts:
+        condition: service_healthy
+      cards:
+        condition: service_healthy
+      loans:
         condition: service_healthy
     extends:
       file: common-config.yml

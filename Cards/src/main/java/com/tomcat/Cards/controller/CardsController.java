@@ -15,6 +15,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -38,6 +40,8 @@ import java.util.Optional;
 @Validated
 @EnableConfigurationProperties(value = {ContactInfoCardsDevTeam.class})
 public class CardsController {
+
+    private static final Logger logger = LoggerFactory.getLogger(CardsController.class);
 
     private final iCardsServices cardsServices;
 
@@ -127,10 +131,12 @@ public class CardsController {
     }
 
     @GetMapping(value = "/fetch-card-by-mobileNumber")
-    public ResponseEntity<CardsDto> fetchCardByMobileNumber(@Pattern(regexp = "$|[0-9]{10}",message = "mobile number must be of 10 digit only")
+    public ResponseEntity<CardsDto> fetchCardByMobileNumber(
+            @RequestHeader("eazybank-correlation-id") String correlationId,
+                                                     @Pattern(regexp = "$|[0-9]{10}",message = "mobile number must be of 10 digit only")
                                                      @RequestParam String mobileNumber){
 //        System.out.println(mobileNumber);
-
+        logger.debug("eazyBank-correlation-id found: {} ", correlationId);
         Optional<CardsDto> cardsOptional = cardsServices.fetchCardDetailsByMobileNumber(mobileNumber);
 //        System.out.println(cardsOptional);
         return cardsOptional.map(cards -> ResponseEntity

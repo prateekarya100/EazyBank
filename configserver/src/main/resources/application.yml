@@ -43,3 +43,10 @@ management:
 
 encrypt:
   key: "0BckgEebp9S6c24woicqzgOpfwWMk82O"
+
+
+logging:
+  level:
+    com:
+      tomcat:
+        configserver: DEBUG
