@@ -15,8 +15,8 @@ spring:
     # username: sa
     # password: ''
     # driverClassName: org.h2.Driver
-    url: "jdbc:mysql://localhost:3308/cardsdb"
-#    url: "jdbc:mysql://localhost:3306/microservices"
+#    url: "jdbc:mysql://localhost:3308/cardsdb"
+    url: "jdbc:mysql://localhost:3306/microservices"
     username: "root"
     password: "root"
     driver-class-name: "com.mysql.cj.jdbc.Driver"

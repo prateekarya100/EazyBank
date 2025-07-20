@@ -23,7 +23,7 @@ public class GatewayserverApplication {
 						.path("/eazybank/accounts/**")//?<segment>.*) = '/${segment}'
 						.filters(f->f.rewritePath("/eazybank/accounts/(?<segment>.*)","/${segment}")
 								.addResponseHeader("X-Response-Time", LocalDateTime.now().toString())
-						)
+								.circuitBreaker(config -> config.setName("accountsCircuitBreaker")))
 						.uri("lb://ACCOUNTS"))
 
 				.route(p->p
